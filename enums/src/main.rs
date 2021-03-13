@@ -1,8 +1,16 @@
+#[derive(Debug)] // so we can inspect the state in a minute
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+#[derive(Debug)]
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
 }
 
 impl Coin {
@@ -11,11 +19,15 @@ impl Coin {
             Self::Penny => 1,
             Self::Nickel => 5,
             Self::Dime => 10,
-            Self::Quarter => 25,
+            Self::Quarter(state) => {
+                println!("State quarter from {:?}!", state);
+                25
+            }
         }
     }
 }
 
 fn main() {
     println!("value of the coin is {}", Coin::Nickel.value_in_cents());
+    println!("value of the coin is {}", Coin::Quarter(UsState::Alaska).value_in_cents());
 }
