@@ -1,0 +1,32 @@
+#[derive(Debug)]
+enum IpAddrKind {
+    V4,
+    V6,
+}
+
+#[derive(Debug)]
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
+}
+
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+fn main() {
+    let home = IpAddr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
+
+    let loopback = IpAddr {
+        kind: IpAddrKind::V6,
+        address: String::from("::1"),
+    };
+
+    println!("the home IpAddr is {:?}", home);
+}
