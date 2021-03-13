@@ -4,7 +4,7 @@ fn main() {
     println!("Convert celcius to fuckrenheit!");
 
     loop {
-        println!("Please input your temperature in celcius:");
+        println!("Please input your temperature in celsius:");
 
         let mut celsius = String::new();
 
