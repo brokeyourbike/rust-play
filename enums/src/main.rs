@@ -30,4 +30,5 @@ impl Coin {
 fn main() {
     println!("value of the coin is {}", Coin::Nickel.value_in_cents());
     println!("value of the coin is {}", Coin::Quarter(UsState::Alaska).value_in_cents());
+    println!("value of the coin is {}", Coin::Quarter(UsState::Alabama).value_in_cents());
 }
