@@ -1,5 +1,5 @@
 fn main() {
-    let x = five();
+    let _x = five();
 
     let y = {
         let x = plus_one(3);
