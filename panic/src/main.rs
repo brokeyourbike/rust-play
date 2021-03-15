@@ -4,9 +4,9 @@ use std::io::ErrorKind;
 use std::io::Read;
 
 fn main() {
-    let f = File::open("hello.txt");
+    let _f = File::open("hello.txt");
 
-    let f = File::open("hello.txt").unwrap_or_else(|error| {
+    let _f = File::open("hello.txt").unwrap_or_else(|error| {
         if error.kind() == ErrorKind::NotFound {
             File::create("hello.txt").unwrap_or_else(|error| {
                 panic!("Problem creating the file: {:?}", error);
@@ -16,7 +16,7 @@ fn main() {
         }
     });
 
-    let username = read_username_from_file();
+    let _username = read_username_from_file();
 }
 
 fn read_username_from_file() -> Result<String, io::Error> {

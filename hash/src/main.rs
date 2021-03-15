@@ -15,7 +15,7 @@ fn main() {
     }
 
     let team_name = String::from("Blue");
-    let score = scores.get(&team_name);
+    let _score = scores.get(&team_name);
 
     let text = "hello world wonderful world";
 

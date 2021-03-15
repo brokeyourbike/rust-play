@@ -10,27 +10,27 @@ mod back_of_house {
 
     pub struct Breakfast {
         pub toast: String,
-        seasonal_fruit: String,
+        _seasonal_fruit: String,
     }
 
     impl Breakfast {
         pub fn summer(toast: &str) -> Breakfast {
             Breakfast {
                 toast: String::from(toast),
-                seasonal_fruit: String::from("peaches"),
+                _seasonal_fruit: String::from("peaches"),
             }
         }
     }
 
-    fn fix_incorrect_order() {
-        cook_order();
-        super::serve_order();
+    fn _fix_incorrect_order() {
+        _cook_order();
+        super::_serve_order();
     }
 
-    fn cook_order() {}
+    fn _cook_order() {}
 }
 
-fn serve_order() {}
+fn _serve_order() {}
 
 pub fn eat_at_restaurant() {
     // Order a breakfast in the summer with Rye toast
