@@ -1,0 +1,45 @@
+name: Rust
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test_adder:
+
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        package:
+          - adder
+          - branches
+          - collections
+          - enums
+          - fuckrenheit
+          - functions
+          - gen
+          - gg
+          - hash
+          - hello_cargo
+          - loops
+          - minigrep
+          - ownership
+          - panic
+          - reference
+          - restaurant
+          - string
+          - structs
+          - variables
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cd ${{ matrix.package }} && cargo build --verbose
+    - name: Run tests
+      run: cd ${{ matrix.package }} && cargo test --verbose
