@@ -36,6 +36,7 @@ jobs:
           - string
           - structs
           - variables
+          - pig_latin
 
     steps:
     - uses: actions/checkout@v2
