@@ -1,11 +1,20 @@
-#[derive(Debug)] // so we can inspect the state in a minute
-enum UsState {
-    Alabama,
-    Alaska,
-    // --snip--
+#![allow(dead_code)]
+enum IpAddrKind {
+    V4,
+    V6,
+}
+
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
 }
 
 #[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+}
+
 enum Coin {
     Penny,
     Nickel,
@@ -13,22 +22,33 @@ enum Coin {
     Quarter(UsState),
 }
 
-impl Coin {
-    fn value_in_cents(&self) -> u8 {
-        match self {
-            Self::Penny => 1,
-            Self::Nickel => 5,
-            Self::Dime => 10,
-            Self::Quarter(state) => {
-                println!("State quarter from {:?}!", state);
-                25
-            }
-        }
+fn main() {
+    let _four = IpAddrKind::V4;
+    let _six = IpAddrKind::V6;
+
+    let _home = IpAddr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
+
+    let _loopback = IpAddr {
+        kind: IpAddrKind::V6,
+        address: String::from("::1"),
+    };
+
+    assert_eq!(5, value_in_cents(Coin::Nickel));
+    assert_eq!(25, value_in_cents(Coin::Quarter(UsState::Alaska)));
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+            25
+        },
     }
 }
 
-fn main() {
-    println!("value of the coin is {}", Coin::Nickel.value_in_cents());
-    println!("value of the coin is {}", Coin::Quarter(UsState::Alaska).value_in_cents());
-    println!("value of the coin is {}", Coin::Quarter(UsState::Alabama).value_in_cents());
-}
