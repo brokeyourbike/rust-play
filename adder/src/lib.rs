@@ -15,7 +15,7 @@ pub fn add_two(a: i32) -> i32 {
 }
 
 pub fn greeting(name: &str) -> String {
-    String::from("Hello!")
+    format!("{} {}", String::from("Hello!"), name)
 }
 
 #[cfg(test)]
