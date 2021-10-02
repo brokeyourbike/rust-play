@@ -1,40 +1,40 @@
-#[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
 }
 
-impl Rectangle {
-    fn area(&self) -> u32 {
-        self.width * self.height
-    }
-
-    fn can_hold(&self, other: &Rectangle) -> bool {
-        self.width > other.width && self.height > other.height
-    }
-}
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
 
 fn main() {
-    let rect1 = Rectangle {
-        width: 30,
-        height: 50,
-    };
-    let rect2 = Rectangle {
-        width: 10,
-        height: 40,
-    };
-    let rect3 = Rectangle {
-        width: 60,
-        height: 45,
+    let mut user1 = build_user(String::from("admin@kek.com"), String::from("admin"));
+
+    println!("{}", user1.email);
+
+    user1.email = String::from("lol@kek.com");
+
+    println!("{}", user1.email);
+
+    let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        ..user1
     };
 
-    println!("rect1 is {:?}", rect1);
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
 
-    println!(
-        "The area of the rectangle is {} square pixels.",
-        rect1.area()
-    );
+    println!("{}", black.0);
+}
 
-    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
-    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
 }
