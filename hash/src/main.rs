@@ -7,24 +7,11 @@ fn main() {
     let mut scores: HashMap<_, _> =
         teams.into_iter().zip(initial_scores.into_iter()).collect();
 
-    scores.insert(String::from("Blue"), 25);
+    scores.entry(String::from("Blue")).or_insert(50);
 
-    println!("Your scores are:");
     for (key, value) in &scores {
         println!("{}: {}", key, value);
     }
 
-    let team_name = String::from("Blue");
-    let _score = scores.get(&team_name);
-
-    let text = "hello world wonderful world";
-
-    let mut map = HashMap::new();
-
-    for word in text.split_whitespace() {
-        let count = map.entry(word).or_insert(0);
-        *count += 1;
-    }
-
-    println!("{:?}", map);
+    println!("{:?}", scores);
 }
