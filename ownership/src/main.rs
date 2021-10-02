@@ -3,7 +3,7 @@ fn main() {
 
     println!("{}", reference_to_nothing);
 
-    let mut s = String::from("hello world");
+    let s = String::from("hello world");
 
     let word = first_word(&s);
 
@@ -16,7 +16,7 @@ fn dangle() -> String {
     s
 }
 
-fn first_word(s: &String) -> &str {
+fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
