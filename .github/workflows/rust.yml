@@ -32,6 +32,7 @@ jobs:
           - lifetimes
           - loops
           - minigrep
+          - mutex
           - ownership
           - panic
           - pig_latin
