@@ -12,13 +12,14 @@ env:
 jobs:
   test_adder:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 5
 
     strategy:
       matrix:
         package:
           - adder
           - branches
+          - closure
           - collections
           - enums
           - fuckrenheit
@@ -27,6 +28,7 @@ jobs:
           - gg
           - hash
           - hello_cargo
+          - iterators
           - lifetimes
           - loops
           - minigrep
@@ -37,6 +39,7 @@ jobs:
           - restaurant
           - string
           - structs
+          - threads
           - variables
 
     steps:
