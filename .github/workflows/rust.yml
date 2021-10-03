@@ -32,12 +32,12 @@ jobs:
           - minigrep
           - ownership
           - panic
+          - pig_latin
           - reference
           - restaurant
           - string
           - structs
           - variables
-          - pig_latin
 
     steps:
     - uses: actions/checkout@v2
