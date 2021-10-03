@@ -1,3 +1,14 @@
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
 pub trait Summary {
     fn summarize(&self) -> String;
 }
@@ -39,6 +50,9 @@ fn main() {
     let result = largest(&char_list);
     println!("The largest char is {}", result);
 
+    let integer = Point { x: 5, y: 10 };
+    let float = Point { x: 1.0, y: 4.0 };
+
     let tweet = Tweet {
         username: String::from("horse_ebooks"),
         content: String::from(
@@ -48,13 +62,7 @@ fn main() {
         retweet: false,
     };
 
-    println!("1 new tweet: {}", tweet.summarize());
-
-    let string1 = String::from("abcd");
-    let string2 = "xyz";
-
-    let result = longest(string1.as_str(), string2);
-    println!("The longest string is {}", result);
+    notify(&tweet);
 }
 
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
@@ -69,10 +77,6 @@ fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     largest
 }
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
 }

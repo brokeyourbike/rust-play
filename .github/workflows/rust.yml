@@ -23,7 +23,7 @@ jobs:
           - enums
           - fuckrenheit
           - functions
-          - gen
+          - generics
           - gg
           - hash
           - hello_cargo
