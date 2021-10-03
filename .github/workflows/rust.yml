@@ -27,6 +27,7 @@ jobs:
           - gg
           - hash
           - hello_cargo
+          - lifetimes
           - loops
           - minigrep
           - ownership
